@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.EntityFrameworkCore;
 using NoticiasTagsApp.Context;
+using NoticiasTagsApp.Repository;
+using NoticiasTagsApp.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,12 @@ builder.Services.AddDbContext<Contexto>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
     .EnableSensitiveDataLogging()
            .LogTo(Console.WriteLine));
+
+builder.Services.AddScoped<INoticiaRepository, NoticiaRepository>();
+builder.Services.AddScoped<INoticiaService, NoticiaService>();
+
+builder.Services.AddControllersWithViews();
+
 
 
 var app = builder.Build();
