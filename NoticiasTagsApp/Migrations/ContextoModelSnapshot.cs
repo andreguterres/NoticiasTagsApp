@@ -21,7 +21,7 @@ namespace NoticiasTagsApp.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("NoticiasTagsApp.Models.NoticiaModel", b =>
+            modelBuilder.Entity("NoticiasTagsApp.Models.Noticia", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,7 +47,7 @@ namespace NoticiasTagsApp.Migrations
                     b.ToTable("Noticias");
                 });
 
-            modelBuilder.Entity("NoticiasTagsApp.Models.NoticiaTagModel", b =>
+            modelBuilder.Entity("NoticiasTagsApp.Models.NoticiaTag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -70,7 +70,7 @@ namespace NoticiasTagsApp.Migrations
                     b.ToTable("NoticiaTags");
                 });
 
-            modelBuilder.Entity("NoticiasTagsApp.Models.TagModel", b =>
+            modelBuilder.Entity("NoticiasTagsApp.Models.Tag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -87,7 +87,7 @@ namespace NoticiasTagsApp.Migrations
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("NoticiasTagsApp.Models.UsuarioModel", b =>
+            modelBuilder.Entity("NoticiasTagsApp.Models.Usuario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -112,9 +112,9 @@ namespace NoticiasTagsApp.Migrations
                     b.ToTable("Usuarios");
                 });
 
-            modelBuilder.Entity("NoticiasTagsApp.Models.NoticiaModel", b =>
+            modelBuilder.Entity("NoticiasTagsApp.Models.Noticia", b =>
                 {
-                    b.HasOne("NoticiasTagsApp.Models.UsuarioModel", "Usuario")
+                    b.HasOne("NoticiasTagsApp.Models.Usuario", "Usuario")
                         .WithMany("Noticias")
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -123,15 +123,15 @@ namespace NoticiasTagsApp.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("NoticiasTagsApp.Models.NoticiaTagModel", b =>
+            modelBuilder.Entity("NoticiasTagsApp.Models.NoticiaTag", b =>
                 {
-                    b.HasOne("NoticiasTagsApp.Models.NoticiaModel", "Noticia")
+                    b.HasOne("NoticiasTagsApp.Models.Noticia", "Noticia")
                         .WithMany("NoticiaTags")
                         .HasForeignKey("NoticiaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NoticiasTagsApp.Models.TagModel", "Tag")
+                    b.HasOne("NoticiasTagsApp.Models.Tag", "Tag")
                         .WithMany("NoticiaTags")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -142,17 +142,17 @@ namespace NoticiasTagsApp.Migrations
                     b.Navigation("Tag");
                 });
 
-            modelBuilder.Entity("NoticiasTagsApp.Models.NoticiaModel", b =>
+            modelBuilder.Entity("NoticiasTagsApp.Models.Noticia", b =>
                 {
                     b.Navigation("NoticiaTags");
                 });
 
-            modelBuilder.Entity("NoticiasTagsApp.Models.TagModel", b =>
+            modelBuilder.Entity("NoticiasTagsApp.Models.Tag", b =>
                 {
                     b.Navigation("NoticiaTags");
                 });
 
-            modelBuilder.Entity("NoticiasTagsApp.Models.UsuarioModel", b =>
+            modelBuilder.Entity("NoticiasTagsApp.Models.Usuario", b =>
                 {
                     b.Navigation("Noticias");
                 });
