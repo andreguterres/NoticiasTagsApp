@@ -16,6 +16,10 @@ builder.Services.AddDbContext<Contexto>(options =>
 
 builder.Services.AddScoped<INoticiaRepository, NoticiaRepository>();
 builder.Services.AddScoped<INoticiaService, NoticiaService>();
+builder.Services.AddScoped<ITagRepository, TagRepository>();
+builder.Services.AddScoped<INoticiaService, NoticiaService>();
+
+
 
 builder.Services.AddControllersWithViews();
 
